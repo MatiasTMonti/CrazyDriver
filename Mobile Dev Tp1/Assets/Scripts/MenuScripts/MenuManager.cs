@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] DifficultyScriptableObject difficulty;
+    [SerializeField] MultiplayerScriptableObject multiplayer;
+
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
 
     public void ChangeScene(string scene)
     {
@@ -15,6 +21,11 @@ public class MenuManager : MonoBehaviour
     public void ChangeDifficulty(int diff)
     {
         difficulty.currentDifficulty = (Difficulty)diff;
+    }
+
+    public void ChangeMultiplayer(bool multi)
+    {
+        multiplayer.isMultiplayer = multi;
     }
 
     public void PauseGame()
