@@ -412,6 +412,7 @@ MonoBehaviour:
   multiplayer: {fileID: 11400000, guid: d14d39bf927f805419182f8e19b382f8, type: 2}
   textWin1: {fileID: 0}
   textWin2: {fileID: 0}
+  text: {fileID: 186979829}
 --- !u!1 &219376535
 GameObject:
   m_ObjectHideFlags: 0
