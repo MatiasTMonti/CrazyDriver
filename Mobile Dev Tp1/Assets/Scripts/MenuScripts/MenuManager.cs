@@ -11,6 +11,12 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1;
+        GameManager.OnEndgame += ChangeSceneEndGame;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnEndgame -= ChangeSceneEndGame;
     }
 
     public void ChangeScene(string scene)
@@ -37,5 +43,17 @@ public class MenuManager : MonoBehaviour
     {
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
         panel.SetActive(!panel.activeSelf);
+    }
+
+    public void ChangeSceneEndGame()
+    {
+        if (multiplayer.isMultiplayer)
+        {
+            SceneManager.LoadScene("EndGameMultiPlayer");
+        }
+        else
+        {
+            SceneManager.LoadScene("EndGameSinglePlayer");
+        }
     }
 }
