@@ -122,11 +122,6 @@ public class GameManager : MonoBehaviour
 
             case EstadoJuego.Jugando:
 
-                ////SKIP LA CARRERA
-                //if (Input.GetKey(KeyCode.Alpha9)) {
-                //    TiempoDeJuego = 0;
-                //}
-
                 if (TiempoDeJuego <= 0)
                 {
                     FinalizarCarrera();
@@ -220,28 +215,6 @@ public class GameManager : MonoBehaviour
         EstAct = GameManager.EstadoJuego.Finalizado;
 
         TiempoDeJuego = 0;
-
-        //if (Player1.Dinero > Player2.Dinero) {
-        //    //lado que gano
-        //    if (Player1.LadoActual == Visualizacion.Lado.Der)
-        //        DatosPartida.LadoGanadaor = DatosPartida.Lados.Der;
-        //    else
-        //        DatosPartida.LadoGanadaor = DatosPartida.Lados.Izq;
-        //    //puntajes
-        //    DatosPartida.PtsGanador = Player1.Dinero;
-        //    DatosPartida.PtsPerdedor = Player2.Dinero;
-        //}
-        //else {
-        //    //lado que gano
-        //    if (Player2.LadoActual == Visualizacion.Lado.Der)
-        //        DatosPartida.LadoGanadaor = DatosPartida.Lados.Der;
-        //    else
-        //        DatosPartida.LadoGanadaor = DatosPartida.Lados.Izq;
-
-        //    //puntajes
-        //    DatosPartida.PtsGanador = Player2.Dinero;
-        //    DatosPartida.PtsPerdedor = Player1.Dinero;
-        //}
 
         MakePoints();
 
