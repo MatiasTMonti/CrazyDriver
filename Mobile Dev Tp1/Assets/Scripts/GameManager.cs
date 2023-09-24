@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Player player1;
     [SerializeField] private Player player2;
+
+    public static Action OnEndgame;
 
     bool ConteoRedresivo = true;
     public Rect ConteoPosEsc;
@@ -168,7 +171,7 @@ public class GameManager : MonoBehaviour
 
                 TiempEspMuestraPts -= Time.deltaTime;
                 if (TiempEspMuestraPts <= 0)
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    OnEndgame();
 
                 break;
         }
@@ -356,17 +359,5 @@ public class GameManager : MonoBehaviour
         DatosPartida.player1Points = player1.Dinero;
         if (player2)
             DatosPartida.player2Points = player2.Dinero;
-    }
-
-    public void ChangeSceneEndGame()
-    {
-        if (multiplayer.isMultiplayer)
-        {
-            SceneManager.LoadScene("");
-        }
-        else
-        {
-            SceneManager.LoadScene("EndGame");
-        }
     }
 }
