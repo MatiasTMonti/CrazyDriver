@@ -26,8 +26,11 @@ public class GameManager : MonoBehaviour
 
     public float TiempEspMuestraPts = 3;
 
-    //[SerializeField] private Joystick j1;
-    //[SerializeField] private Joystick j2;
+    [SerializeField] private Joystick j1;
+    [SerializeField] private Joystick j2;
+
+    [SerializeField] private GameObject volanteP1;
+    [SerializeField] private GameObject volanteP2;
 
     [SerializeField] private GameObject boxes;
     [SerializeField] private GameObject taxis;
@@ -74,6 +77,16 @@ public class GameManager : MonoBehaviour
     {
         yield return null;
 
+#if !UNITY_ANDROID
+        j1.transform.parent.gameObject.SetActive(false);
+        if (multiplayer.isMultiplayer)
+            j2.transform.parent.gameObject.SetActive(false);
+#else
+        volanteP1.transform.parent.gameObject.SetActive(false);
+        if (multiplayer.isMultiplayer)
+            volanteP2.transform.parent.gameObject.SetActive(false);
+#endif
+
         SetDifficulty();
         IniciarTutorial();
     }
@@ -116,6 +129,24 @@ public class GameManager : MonoBehaviour
 
         switch (EstAct)
         {
+
+#if UNITY_ANDROID
+        case EstadoJuego.Calibrando:
+
+                if (j1.Vertical > 0.85f) {
+                    Player1.Seleccionado = true;
+                }
+
+                if (multiplayer.isMultiplayer)
+                {
+                    if (j2.Vertical > 0.85f)
+                    {
+                        Player2.Seleccionado = true;
+                    }
+                }
+                break;
+#endif
+#if !UNITY_ANDROID
             case EstadoJuego.Calibrando:
 
                 if (Input.GetKeyDown(KeyCode.W))
@@ -131,7 +162,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
                 break;
-
+#endif
 
             case EstadoJuego.Jugando:
 
