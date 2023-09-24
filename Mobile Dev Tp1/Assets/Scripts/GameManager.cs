@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject boxes;
     [SerializeField] private GameObject taxis;
 
+    [SerializeField] private GameObject bolsasFacil;
+    [SerializeField] private GameObject bolsasNormal;
+    [SerializeField] private GameObject bolsasDificil;
+
     //posiciones de los camiones dependientes del lado que les toco en la pantalla
     //la pos 0 es para la izquierda y la 1 para la derecha
     public Vector3[] PosCamionesCarrera = new Vector3[2];
@@ -76,14 +80,23 @@ public class GameManager : MonoBehaviour
 
     private void SetDifficulty()
     {
-        if (difficulty.currentDifficulty == Difficulty.NORMAL)
+        if (difficulty.currentDifficulty == Difficulty.EASY)
+        {
+            bolsasFacil.SetActive(true);
+            bolsasNormal.SetActive(true);
+            bolsasDificil.SetActive(true);
+        }
+        else if (difficulty.currentDifficulty == Difficulty.NORMAL)
         {
             boxes.SetActive(true);
+            bolsasNormal.SetActive(true);
+            bolsasDificil.SetActive(true);
         }
         else if (difficulty.currentDifficulty == Difficulty.HARD)
         {
             boxes.SetActive(true);
             taxis.SetActive(true);
+            bolsasDificil.SetActive(true);
         }
     }
 
