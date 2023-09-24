@@ -358,4 +358,15 @@ public class GameManager : MonoBehaviour
             DatosPartida.player2Points = player2.Dinero;
     }
 
+    public void ChangeSceneEndGame()
+    {
+        if (multiplayer.isMultiplayer)
+        {
+            SceneManager.LoadScene("");
+        }
+        else
+        {
+            SceneManager.LoadScene("EndGame");
+        }
+    }
 }
