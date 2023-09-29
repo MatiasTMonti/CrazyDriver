@@ -12,7 +12,6 @@ public class Visualizacion : MonoBehaviour
 	public enum Lado{Izq, Der}
 	public Lado LadoAct;
 	
-	ControlDireccion Direccion;
 	Player Pj;
 
     public GameObject uiRoot;
@@ -25,9 +24,6 @@ public class Visualizacion : MonoBehaviour
 
     //EL DINERO QUE SE TIENE
     public Text Dinero;
-	
-	//EL VOLANTE
-	public Transform volante;
 	
 	//PARA EL INVENTARIO
 	public float Parpadeo = 0.8f;
@@ -57,7 +53,6 @@ public class Visualizacion : MonoBehaviour
     // Use this for initialization
     void Start () 
 	{
-		Direccion = GetComponent<ControlDireccion>();
 		Pj = GetComponent<Player>();
     }
 	
