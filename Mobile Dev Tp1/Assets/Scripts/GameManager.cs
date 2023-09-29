@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Joystick j1;
     [SerializeField] private Joystick j2;
 
-    [SerializeField] private GameObject volanteP1;
-    [SerializeField] private GameObject volanteP2;
+    //[SerializeField] private GameObject volanteP1;
+    //[SerializeField] private GameObject volanteP2;
 
     [SerializeField] private GameObject boxes;
     [SerializeField] private GameObject taxis;
@@ -81,10 +81,10 @@ public class GameManager : MonoBehaviour
         j1.transform.parent.gameObject.SetActive(false);
         if (multiplayer.isMultiplayer)
             j2.transform.parent.gameObject.SetActive(false);
-#else
-        volanteP1.transform.parent.gameObject.SetActive(false);
-        if (multiplayer.isMultiplayer)
-            volanteP2.transform.parent.gameObject.SetActive(false);
+//#else
+//        volanteP1.transform.parent.gameObject.SetActive(false);
+//        if (multiplayer.isMultiplayer)
+//            volanteP2.transform.parent.gameObject.SetActive(false);
 #endif
 
         SetDifficulty();
