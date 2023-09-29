@@ -29,16 +29,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Joystick j1;
     [SerializeField] private Joystick j2;
 
-    //[SerializeField] private GameObject volanteP1;
-    //[SerializeField] private GameObject volanteP2;
-
-    [SerializeField] private GameObject boxes;
-    [SerializeField] private GameObject taxis;
-
-    [SerializeField] private GameObject bolsasFacil;
-    [SerializeField] private GameObject bolsasNormal;
-    [SerializeField] private GameObject bolsasDificil;
-
     //posiciones de los camiones dependientes del lado que les toco en la pantalla
     //la pos 0 es para la izquierda y la 1 para la derecha
     public Vector3[] PosCamionesCarrera = new Vector3[2];
@@ -68,6 +58,10 @@ public class GameManager : MonoBehaviour
 
     //--------------------------------------------------------//
 
+    [SerializeField] private GameObject[] objectsToConfigure;
+
+    private IDifficult currentDifficultyStrategy;
+
     void Awake()
     {
         GameManager.Instancia = this;
@@ -81,10 +75,6 @@ public class GameManager : MonoBehaviour
         j1.transform.parent.gameObject.SetActive(false);
         if (multiplayer.isMultiplayer)
             j2.transform.parent.gameObject.SetActive(false);
-//#else
-//        volanteP1.transform.parent.gameObject.SetActive(false);
-//        if (multiplayer.isMultiplayer)
-//            volanteP2.transform.parent.gameObject.SetActive(false);
 #endif
 
         SetDifficulty();
@@ -93,24 +83,20 @@ public class GameManager : MonoBehaviour
 
     private void SetDifficulty()
     {
-        if (difficulty.currentDifficulty == Difficulty.EASY)
+        switch (difficulty.currentDifficulty)
         {
-            bolsasFacil.SetActive(true);
-            bolsasNormal.SetActive(true);
-            bolsasDificil.SetActive(true);
+            case Difficulty.EASY:
+                currentDifficultyStrategy = new EasyDifficultyStrategy();
+                break;
+            case Difficulty.NORMAL:
+                currentDifficultyStrategy = new NormalDifficultyStrategy();
+                break;
+            case Difficulty.HARD:
+                currentDifficultyStrategy = new HardDifficultyStrategy();
+                break;
         }
-        else if (difficulty.currentDifficulty == Difficulty.NORMAL)
-        {
-            boxes.SetActive(true);
-            bolsasNormal.SetActive(true);
-            bolsasDificil.SetActive(true);
-        }
-        else if (difficulty.currentDifficulty == Difficulty.HARD)
-        {
-            boxes.SetActive(true);
-            taxis.SetActive(true);
-            bolsasDificil.SetActive(true);
-        }
+
+        currentDifficultyStrategy.ConfigureObjects(objectsToConfigure);
     }
 
     void Update()
