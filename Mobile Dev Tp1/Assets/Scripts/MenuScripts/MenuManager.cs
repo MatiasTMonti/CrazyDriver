@@ -43,6 +43,11 @@ public class MenuManager : MonoBehaviour
         panel.SetActive(!panel.activeSelf);
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void ChangeSceneEndGame()
     {
         if (multiplayer.isMultiplayer)
