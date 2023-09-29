@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6015423, g: 0.6018507, b: 0.6013663, a: 1}
+  m_IndirectSpecularColor: {r: 0.6019971, g: 0.60289484, b: 0.6022064, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!196 &3
 NavMeshSettings:
@@ -82353,6 +82353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controlador: {fileID: 0}
   miInput: 1
+  j1: {fileID: 501824752}
+  j2: {fileID: 1553429309}
   Desde: {fileID: 13040}
   Hasta: {fileID: 13041}
 --- !u!1001 &474366142
@@ -83796,6 +83798,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controlador: {fileID: 0}
   miInput: 0
+  j1: {fileID: 501824752}
+  j2: {fileID: 1553429309}
   Desde: {fileID: 13044}
   Hasta: {fileID: 13043}
 --- !u!1 &1049659492 stripped
@@ -84854,6 +84858,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controlador: {fileID: 0}
   miInput: 0
+  j1: {fileID: 0}
+  j2: {fileID: 0}
   Desde: {fileID: 13062}
   Hasta: {fileID: 13063}
 --- !u!1 &1344972914
@@ -85529,6 +85535,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controlador: {fileID: 0}
   miInput: 1
+  j1: {fileID: 0}
+  j2: {fileID: 0}
   Desde: {fileID: 13017}
   Hasta: {fileID: 13016}
 --- !u!1001 &1572886296
